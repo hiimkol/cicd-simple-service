@@ -11,10 +11,14 @@ spring:
           uri: http://simple-service:8080
           predicates:
             - Path=/simple/**
+          filters:
+            - StripPrefix=1
         - id: inventory-service
           uri: http://inventory-service:8080
           predicates:
             - Path=/inventory/**
+          filters:
+            - StripPrefix=1
 
 management:
   endpoints:
