@@ -1,14 +1,20 @@
 version: '3.8'
 
 services:
+  gateway-service:
+    image: ghcr.io/${GITHUB_REPOSITORY}/gateway-service:latest
+    ports:
+      - "80:8080"
+    restart: always
+
   simple-service:
     image: ghcr.io/${GITHUB_REPOSITORY}/simple-service:latest
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
     restart: always
 
   inventory-service:
     image: ghcr.io/${GITHUB_REPOSITORY}/inventory-service:latest
-    ports:
-      - "8081:8080"
+    expose:
+      - "8080"
     restart: always

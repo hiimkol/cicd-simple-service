@@ -1,0 +1,23 @@
+name: Gateway Service CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'gateway-service/**'
+      - '.github/workflows/ci-gateway-service.yml'
+      - '.github/workflows/reusable-build-deploy.yml'
+      - 'compose.yaml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'gateway-service/**'
+
+permissions:
+  packages: write
+
+jobs:
+  run-pipeline:
+    uses: ./.github/workflows/reusable-build-deploy.yml
+    with:
+      service-name: gateway-service
