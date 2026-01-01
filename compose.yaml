@@ -4,7 +4,7 @@ services:
   gateway-service:
     image: ghcr.io/${GITHUB_REPOSITORY}/gateway-service:latest
     ports:
-      - "80:8080"
+      - "${GATEWAY_PORT:-80}:8080"
     restart: always
 
   simple-service:
