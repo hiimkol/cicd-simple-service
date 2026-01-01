@@ -1,0 +1,23 @@
+name: Frontend Service CI
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+    paths:
+      - 'frontend-service/**'
+      - '.github/workflows/ci-frontend-service.yml'
+      - '.github/workflows/reusable-build-deploy.yml'
+      - 'compose.yaml'
+  pull_request:
+    branches: [ "main", "develop" ]
+    paths:
+      - 'frontend-service/**'
+
+permissions:
+  packages: write
+
+jobs:
+  run-pipeline:
+    uses: ./.github/workflows/reusable-build-deploy.yml
+    with:
+      service-name: frontend-service

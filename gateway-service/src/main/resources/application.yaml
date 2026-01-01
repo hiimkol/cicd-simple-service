@@ -19,6 +19,10 @@ spring:
             - Path=/inventory/**
           filters:
             - StripPrefix=1
+        - id: frontend-service
+          uri: http://frontend-service:80
+          predicates:
+            - Path=/**
 
 management:
   endpoints:

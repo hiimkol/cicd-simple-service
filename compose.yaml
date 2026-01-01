@@ -1,6 +1,12 @@
 version: '3.8'
 
 services:
+  frontend-service:
+    image: ghcr.io/${GITHUB_REPOSITORY}/frontend-service:latest
+    expose:
+      - "80"
+    restart: always
+
   gateway-service:
     image: ghcr.io/${GITHUB_REPOSITORY}/gateway-service:latest
     ports:
