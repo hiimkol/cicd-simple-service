@@ -7,6 +7,7 @@ on:
       - 'simple-service/**'
       - '.github/workflows/ci-simple-service.yml'
       - '.github/workflows/reusable-build-deploy.yml'
+      - 'compose.yaml'
   pull_request:
     branches: [ "main" ]
     paths:

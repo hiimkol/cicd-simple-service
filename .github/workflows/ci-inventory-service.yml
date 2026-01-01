@@ -7,6 +7,7 @@ on:
       - 'inventory-service/**'
       - '.github/workflows/ci-inventory-service.yml'
       - '.github/workflows/reusable-build-deploy.yml'
+      - 'compose.yaml'
   pull_request:
     branches: [ "main" ]
     paths:
