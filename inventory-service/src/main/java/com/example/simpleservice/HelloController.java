@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from Inventory Service";
+        return "Hello from Inventory Service (STAGING)";
     }
 }
