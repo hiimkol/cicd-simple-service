@@ -2,7 +2,7 @@ name: Gateway Service CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
     paths:
       - 'gateway-service/**'
       - '.github/workflows/ci-gateway-service.yml'

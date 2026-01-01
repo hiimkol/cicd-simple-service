@@ -2,7 +2,7 @@ name: Inventory Service CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
     paths:
       - 'inventory-service/**'
       - '.github/workflows/ci-inventory-service.yml'
