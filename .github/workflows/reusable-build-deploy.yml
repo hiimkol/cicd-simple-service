@@ -21,7 +21,17 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Check for pom.xml
+      id: check_pom
+      run: |
+        if [ -f "${{ inputs.service-name }}/pom.xml" ]; then
+          echo "exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "exists=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Build with Maven
+      if: steps.check_pom.outputs.exists == 'true'
       run: |
         chmod +x ${{ inputs.service-name }}/mvnw
         ./${{ inputs.service-name }}/mvnw -B package --file ${{ inputs.service-name }}/pom.xml
