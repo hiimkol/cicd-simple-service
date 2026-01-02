@@ -97,3 +97,27 @@ jobs:
           docker compose -p ${{ env.ENV_NAME }} pull ${{ inputs.service-name }}
           docker compose -p ${{ env.ENV_NAME }} up -d ${{ inputs.service-name }}
           docker image prune -a -f
+
+      - name: Notify Telegram on Success
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ✅ Build and Deploy Successful!
+            Repository: ${{ github.repository }}
+            Service: ${{ inputs.service-name }}
+            Environment: ${{ env.ENV_NAME }}
+
+      - name: Notify Telegram on Failure
+        if: failure()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ❌ Build or Deploy Failed!
+            Repository: ${{ github.repository }}
+            Service: ${{ inputs.service-name }}
+            Check logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
