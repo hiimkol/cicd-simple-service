@@ -19,5 +19,6 @@ permissions:
 jobs:
   run-pipeline:
     uses: ./.github/workflows/reusable-build-deploy.yml
+    secrets: inherit
     with:
       service-name: simple-service
